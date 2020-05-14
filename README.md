@@ -11,6 +11,14 @@ To deploy it:
 
     kubectl apply -f https://starkandwayne.com/deploy/welcome-to-k8s.yml
 
+You can port-forward directly to the pod like this:
+
+    kubectl port-forward -n welcome \
+      $(kubectl get pod -n welcome -l app=welcome -o jsonpath='{.items[0].metadata.name}') \
+      8080:80
+
+... and then open up your browser and point it at <http://localhost:8080>.
+
 It should look like this:
 
 ![Welcome to K8s](screenshot.png)
