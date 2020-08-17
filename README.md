@@ -13,9 +13,7 @@ To deploy it:
 
 You can port-forward directly to the pod like this:
 
-    kubectl port-forward -n welcome \
-      $(kubectl get pod -n welcome -l app=welcome -o jsonpath='{.items[0].metadata.name}') \
-      8080:80
+    kubectl port-forward -n welcome svc/welcome 8080:80
 
 ... and then open up your browser and point it at <http://localhost:8080>.
 
